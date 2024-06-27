@@ -18,17 +18,20 @@ function Book(title, author, pages, hasRead) {
 }
 
 function addBookToLibrary(book) {
-    myLibrary.push(book)
-    table.insertAdjacentHTML("beforeend",
-        `<tr> <td> ${book.title} </td>
+    const table = document.getElementById("library")
+    const table_body = document.querySelector("tbody")
+    table_body.insertAdjacentHTML("beforeend",
+        `<tr> 
+                <td> ${book.title} </td>
                 <td> ${book.author} </td>
                 <td> ${book.pages} </td>
                 <td> ${book.hasRead} </td>
               </tr>`)
+
+    myLibrary.push(book)
 }
 
 const form = document.forms["book-submission"]
-const table = document.querySelector("table")
 form.addEventListener("submit", event => {
     event.preventDefault()
     const form_data = new FormData(form)

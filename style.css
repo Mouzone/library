@@ -1,12 +1,47 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+    display: grid;
+    flex-direction: column;
+    padding-top: 30px;
+    gap: 30px;
+}
+
+table,
+form {
+    width: 80vw;
+    justify-self: center;
 }
 
 table {
-    width: 100vw;
+    border-collapse: collapse;
+}
+
+tbody tr:nth-child(odd){
+    background-color: lightslategray;
+}
+
+th,
+td {
+    padding: 7px;
+    border: 1px solid black
+}
+
+th {
+    font-size: 30px;
 }
 
 td {
     text-align: center;
+}
+
+form {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-self: center;
 }
