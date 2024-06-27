@@ -1,11 +1,24 @@
 const myLibrary = []
 
-function Book() {
-
+function Book(title, author, pages, hasRead) {
+    this.title = title
+    this.author = author
+    this.pages = parseInt(pages)
+    this.hasRead = hasRead === "Yes"
+    this.info = function() {
+        // output format: "The Hobbit by J.R.R. Tolkien, 295 pages, not read yet"
+        let output = `${this.title} by ${this.author}, ${this.pages} pages, `
+        if (this.hasRead) {
+            output += "has read"
+        } else {
+            output += "not read yet"
+        }
+        return output
+    }
 }
 
-function addBookToLibrary() {
-
+function addBookToLibrary(book) {
+    myLibrary.append(book)
 }
 
 const form = document.forms["book-submission"]
@@ -16,5 +29,6 @@ form.addEventListener("submit", event => {
     const author = form_data.get("author")
     const pages = form_data.get("pages")
     const hasRead = form_data.get("has_read")
-    console.log(title, author, pages, hasRead)
+    const new_book = new Book(title, author, pages, hasRead)
+    console.log(new_book.info())
 })
