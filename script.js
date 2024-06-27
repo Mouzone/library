@@ -1,20 +1,10 @@
-const myLibrary = []
+const myLibrary = {}
 
 function Book(title, author, pages, hasRead) {
     this.title = title
     this.author = author
     this.pages = parseInt(pages)
     this.hasRead = hasRead === "Yes"
-    this.info = function() {
-        // output format: "The Hobbit by J.R.R. Tolkien, 295 pages, not read yet"
-        let output = `${this.title} by ${this.author}, ${this.pages} pages, `
-        if (this.hasRead) {
-            output += "has read"
-        } else {
-            output += "not read yet"
-        }
-        return output
-    }
 }
 
 function addBookToLibrary(book) {
@@ -22,7 +12,7 @@ function addBookToLibrary(book) {
     const table_body = document.querySelector("tbody")
     const tr = document.createElement("tr")
     table_body.insertAdjacentElement("beforeend", tr)
-    tr.dataset.row = `${myLibrary.length}`
+    tr.dataset.row = `${counter}`
     tr.insertAdjacentHTML("beforeend",
         `<td> ${book.title} </td>
               <td> ${book.author} </td>
@@ -33,15 +23,17 @@ function addBookToLibrary(book) {
     const remove_button = document.createElement("button")
     remove_button_cell.insertAdjacentElement("beforeend", remove_button)
     remove_button.classList.add("remove")
-    remove_button.dataset.row = `${myLibrary.length}`
+    remove_button.dataset.row = `${counter}`
     remove_button.textContent = "Remove"
     remove_button.addEventListener("click", event => {
-        const row_to_remove = document.querySelector(`tr[data-row="0"]`)
+        // fix this section
+        const row_to_remove = document.querySelector(`tr[data-row="${remove_button.dataset.row}"]`)
+        delete myLibrary[remove_button.dataset.row]
         row_to_remove.remove()
     })
 
-
-    myLibrary.push(book)
+    myLibrary[counter] = book
+    counter++
 }
 
 const form = document.forms["book-submission"]
@@ -56,3 +48,5 @@ form.addEventListener("submit", event => {
     addBookToLibrary(new_book)
     form.reset()
 })
+
+let counter = 0
