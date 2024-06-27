@@ -20,13 +20,26 @@ function Book(title, author, pages, hasRead) {
 function addBookToLibrary(book) {
     const table = document.getElementById("library")
     const table_body = document.querySelector("tbody")
-    table_body.insertAdjacentHTML("beforeend",
-        `<tr> 
-                <td> ${book.title} </td>
-                <td> ${book.author} </td>
-                <td> ${book.pages} </td>
-                <td> ${book.hasRead} </td>
-              </tr>`)
+    const tr = document.createElement("tr")
+    table_body.insertAdjacentElement("beforeend", tr)
+    tr.dataset.row = `${myLibrary.length}`
+    tr.insertAdjacentHTML("beforeend",
+        `<td> ${book.title} </td>
+              <td> ${book.author} </td>
+              <td> ${book.pages} </td>
+              <td> ${book.hasRead} </td>`)
+    const remove_button_cell = document.createElement("td")
+    tr.insertAdjacentElement("beforeend", remove_button_cell)
+    const remove_button = document.createElement("button")
+    remove_button_cell.insertAdjacentElement("beforeend", remove_button)
+    remove_button.classList.add("remove")
+    remove_button.dataset.row = `${myLibrary.length}`
+    remove_button.textContent = "Remove"
+    remove_button.addEventListener("click", event => {
+        const row_to_remove = document.querySelector(`tr[data-row="0"]`)
+        row_to_remove.remove()
+    })
+
 
     myLibrary.push(book)
 }
