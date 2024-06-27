@@ -18,10 +18,17 @@ function Book(title, author, pages, hasRead) {
 }
 
 function addBookToLibrary(book) {
-    myLibrary.append(book)
+    myLibrary.push(book)
+    table.insertAdjacentHTML("beforeend",
+        `<tr> <td> ${book.title} </td>
+                <td> ${book.author} </td>
+                <td> ${book.pages} </td>
+                <td> ${book.hasRead} </td>
+              </tr>`)
 }
 
 const form = document.forms["book-submission"]
+const table = document.querySelector("table")
 form.addEventListener("submit", event => {
     event.preventDefault()
     const form_data = new FormData(form)
@@ -30,5 +37,6 @@ form.addEventListener("submit", event => {
     const pages = form_data.get("pages")
     const hasRead = form_data.get("has_read")
     const new_book = new Book(title, author, pages, hasRead)
-    console.log(new_book.info())
+    addBookToLibrary(new_book)
+    form.reset()
 })

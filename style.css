@@ -2,3 +2,11 @@
     margin: 0;
     padding: 0;
 }
+
+table {
+    width: 100vw;
+}
+
+td {
+    text-align: center;
+}
