@@ -16,7 +16,7 @@ function addBookToLibrary(book) {
     const table_body = document.querySelector("tbody")
     const tr = document.createElement("tr")
     table_body.insertAdjacentElement("beforeend", tr)
-    tr.dataset.row = `${counter}`
+    tr.dataset.id = `${counter}`
     tr.insertAdjacentHTML("beforeend",
         `<td> ${book.title} </td>
               <td> ${book.author} </td>
@@ -42,7 +42,7 @@ function addBookToLibrary(book) {
     remove_button.dataset.id = `${counter}`
     remove_button.textContent = "Remove"
     remove_button.addEventListener("click", event => {
-        const row_to_remove = document.querySelector(`tr[data-row="${remove_button.dataset.id}"]`)
+        const row_to_remove = document.querySelector(`tr[data-id="${remove_button.dataset.id}"]`)
         delete myLibrary[remove_button.dataset.id]
         row_to_remove.remove()
     })
