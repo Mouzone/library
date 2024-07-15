@@ -12,10 +12,6 @@ class Book {
         this.pages = parseInt(pages)
         this.hasRead = hasRead === "Yes"
     }
-
-    get title() {
-        return
-    }
 }
 
 function addBookToLibrary(book) {
