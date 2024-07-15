@@ -5,11 +5,17 @@
 
 const myLibrary = {}
 
-function Book(title, author, pages, hasRead) {
-    this.title = title
-    this.author = author
-    this.pages = parseInt(pages)
-    this.hasRead = hasRead === "Yes"
+class Book {
+    constructor(title, author, pages, hasRead) {
+        this.title = title
+        this.author = author
+        this.pages = parseInt(pages)
+        this.hasRead = hasRead === "Yes"
+    }
+
+    get title() {
+        return
+    }
 }
 
 function addBookToLibrary(book) {
