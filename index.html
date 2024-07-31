@@ -10,19 +10,22 @@
         <form id="book-submission">
             <div class="section">
                 <label for="title"> Title: </label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" required>
+                <span class="error" aria-live="polite"></span>
             </div>
             <div class="section">
                 <label for="author"> Author: </label>
-                <input type="text" id="author" name="author">
+                <input type="text" id="author" name="author" required>
+                <span class="error" aria-live="polite"></span>
             </div>
             <div class="section">
                 <label for="pages"> Number of Pages: </label>
-                <input type="number" id="pages" name="pages">
+                <input type="number" id="pages" name="pages" required>
+                <span class="error" aria-live="polite"></span>
             </div>
             <div class="section">
                 <p> Read? </p>
-                <input type="radio" id="yes" name="has_read" value="Yes">
+                <input type="radio" id="yes" name="has_read" value="Yes" checked>
                 <label for="yes"> Yes </label>
                 <input type="radio" id="no" name="has_read" value="No">
                 <label for="no"> No </label>
